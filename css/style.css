@@ -4,3 +4,11 @@ body {
 }
 #phone-container {
 }
+#phone-container .card img {
+  padding: 10px;
+}
+.detailsImg {
+  width: 220px;
+  margin: 0 auto;
+  padding-top: 10px;
+}
