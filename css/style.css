@@ -15,6 +15,7 @@ body {
 p {
   margin-bottom: 0;
 }
-.main-feture span {
+.main-feture span,
+.other-fetures span {
   font-weight: 300;
 }

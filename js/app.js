@@ -5,7 +5,8 @@ const loadPhones = () => {
   const url = `https://openapi.programming-hero.com/api/phones?search=${searchValue}`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => showPhones(data.data));
+    .then((data) => showPhones(data.data.slice(0, 20)));
+  // .then((data) => console.log(data.data.slice(0, 20)));
   // clearing value after searching
   searchField.value = "";
 };
@@ -61,7 +62,7 @@ const showDetails = (phDetails) => {
             <p class="fw-bold">Brand: <span class="lead">${
               phDetails.brand
             }</span></p>
-            
+
             <div class="main-feture"><span class="fw-bold">Main Features</span>: 
             <p>Chip Set: <span>${phDetails.mainFeatures.chipSet}</span></p>
             <p>Display Size: <span>${
@@ -74,6 +75,15 @@ const showDetails = (phDetails) => {
             )}</span></p>
             </div>
             
+            <div class="other-fetures"><span class="fw-bold">Other Features</span>: 
+            <p>Bluetooth: <span>${phDetails.others.Bluetooth}</span></p>
+            <p>GPS: <span>${phDetails.others.GPS}</span></p>
+            <p>NFC: <span>${phDetails.others.NFC}</span></p>
+            <p>Radio: <span>${phDetails.others.Radio}</span></p>
+            <p>USB: <span>${phDetails.others.USB}</span></p>
+            <p>WLAN: <span>${phDetails.others.WLAN}</span></p>
+            
+            </div>
 
         </div>
     </div>
