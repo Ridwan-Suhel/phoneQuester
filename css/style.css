@@ -12,3 +12,9 @@ body {
   margin: 0 auto;
   padding-top: 10px;
 }
+p {
+  margin-bottom: 0;
+}
+.main-feture span {
+  font-weight: 300;
+}

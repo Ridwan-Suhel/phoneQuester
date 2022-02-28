@@ -52,10 +52,29 @@ const showDetails = (phDetails) => {
     <div class="card">
         <img src="${phDetails.image}" class="detailsImg" alt="image" />
         <div class="card-body">
-            <h5 class="card-title">Name: <span class="lead">${phDetails.name}</span></h5>
-            <p class="fw-bold">Release Date: <span class="lead" id="releaseDate">${phDetails.releaseDate}</span></p>
-            <p class="fw-bold">Brand: <span class="lead">${phDetails.brand}</span></p>
+            <h5 class="card-title">Name: <span class="lead">${
+              phDetails.name
+            }</span></h5>
+            <p class="fw-bold">Release Date: <span class="lead" id="releaseDate">${
+              phDetails.releaseDate
+            }</span></p>
+            <p class="fw-bold">Brand: <span class="lead">${
+              phDetails.brand
+            }</span></p>
             
+            <div class="main-feture"><span class="fw-bold">Main Features</span>: 
+            <p>Chip Set: <span>${phDetails.mainFeatures.chipSet}</span></p>
+            <p>Display Size: <span>${
+              phDetails.mainFeatures.displaySize
+            }</span></p>
+            <p>Memory: <span>${phDetails.mainFeatures.memory}</span></p>
+            <p>Storage: <span>${phDetails.mainFeatures.storage}</span></p>
+            <p>Sensors: <span>${phDetails.mainFeatures.sensors.join(
+              " - "
+            )}</span></p>
+            </div>
+            
+
         </div>
     </div>
   `;
