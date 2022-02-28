@@ -44,6 +44,7 @@ const loadDetails = (loadPhDetails) => {
 // showing details
 const showDetails = (phDetails) => {
   const detailsWrapper = document.getElementById("details-wrapper");
+  detailsWrapper.innerText = "";
 
   const divCol = document.createElement("div");
   divCol.classList.add("col");
@@ -51,16 +52,17 @@ const showDetails = (phDetails) => {
     <div class="card">
         <img src="${phDetails.image}" class="detailsImg" alt="image" />
         <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-            This is a longer card with supporting text below as a
-            natural lead-in to additional content. This content is a
-            little bit longer.
-            </p>
+            <h5 class="card-title">Name: <span class="lead">${phDetails.name}</span></h5>
+            <p class="fw-bold">Release Date: <span class="lead" id="releaseDate">${phDetails.releaseDate}</span></p>
+            <p class="fw-bold">Brand: <span class="lead">${phDetails.brand}</span></p>
+            
         </div>
     </div>
   `;
-
   detailsWrapper.appendChild(divCol);
+  if (phDetails.releaseDate == "") {
+    document.getElementById("releaseDate").innerHTML =
+      "No released date found.";
+  }
   console.log(phDetails);
 };
