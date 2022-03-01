@@ -1,6 +1,6 @@
 const loadPhones = () => {
   const searchField = document.getElementById("search-input");
-  const searchValue = searchField.value;
+  const searchValue = searchField.value.toLowerCase();
 
   if (searchValue == "") {
     document.getElementById("warning-msg").innerHTML =
@@ -8,16 +8,16 @@ const loadPhones = () => {
   } else {
     // fetching url
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchValue}`;
+
     fetch(url)
       .then((res) => res.json())
-      // .then((data) => showPhones(data.data.slice(0, 20)));
       .then((data) => {
         if (data.data.length === 0) {
           // showing not Found msg
           const phonesContainer = document.getElementById("phone-container");
           phonesContainer.innerHTML =
-            "<div class='noFound-msg'><img src='img/not-found.png' alt='img'> <span>Oops! No phone found.</span>  </div>";
-          // console.log("warning");
+            "<div class='noFound-msg'><img src='img/not-found.png' alt='img'> <span class='lead'>Oops! No phone found.</span>  </div>";
+          spinnerFunc("none");
         } else {
           showPhones(data.data.slice(0, 20));
         }
@@ -26,14 +26,14 @@ const loadPhones = () => {
     // clearing value after searching
     searchField.value = "";
 
-    //throwing erro
+    //throwing error
     document.getElementById("warning-msg").innerHTML = "";
 
     // clearing inner text/elements of phone details for new input search if details exist
     const detailsWrapper = document.getElementById("details-wrapper");
     detailsWrapper.innerText = "";
 
-    // spinnerFunc("flex");
+    spinnerFunc("flex");
   }
 };
 
@@ -58,7 +58,7 @@ const showPhones = (phones) => {
       `;
 
     phonesContainer.appendChild(divCol);
-    // spinnerFunc("none");
+    spinnerFunc("none");
   }
 };
 
@@ -127,8 +127,6 @@ const showDetails = (phDetails) => {
     document.querySelector("#other-fetures-contents").innerHTML =
       "Oops! currently there is no other features to show.";
   }
-
-  // console.log(phDetails);
 };
 
 const spinnerFunc = (spinnerDisplay) => {
