@@ -41,3 +41,34 @@ a.site-title {
   justify-content: center;
   align-items: center;
 }
+/* no found msg */
+.noFound-msg {
+  text-align: center;
+  width: 100%;
+  margin-top: 100px;
+}
+.noFound-msg span {
+  font-size: 28px;
+  display: block;
+}
+.noFound-msg img {
+  width: 50px;
+}
+.ph-details {
+  background: #333;
+  padding: 2px 5px 2px 15px;
+  color: #fff;
+  margin-bottom: 10px;
+
+  position: relative;
+}
+.ph-details:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 5px;
+  height: 100%;
+  background: rgb(0, 119, 255);
+  top: 0px;
+  left: 0px;
+}

@@ -10,7 +10,18 @@ const loadPhones = () => {
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchValue}`;
     fetch(url)
       .then((res) => res.json())
-      .then((data) => showPhones(data.data.slice(0, 20)));
+      // .then((data) => showPhones(data.data.slice(0, 20)));
+      .then((data) => {
+        if (data.data.length === 0) {
+          // showing not Found msg
+          const phonesContainer = document.getElementById("phone-container");
+          phonesContainer.innerHTML =
+            "<div class='noFound-msg'><img src='img/not-found.png' alt='img'> <span>Oops! No phone found.</span>  </div>";
+          // console.log("warning");
+        } else {
+          showPhones(data.data.slice(0, 20));
+        }
+      });
 
     // clearing value after searching
     searchField.value = "";
