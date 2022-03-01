@@ -72,3 +72,23 @@ a.site-title {
   top: 0px;
   left: 0px;
 }
+
+/* media queries  */
+@media (max-width: 767px) {
+  .site-row {
+    flex-direction: column-reverse;
+  }
+  .phone-search-area {
+    margin-top: 20px;
+  }
+  .card-img-top {
+    width: 220px;
+    margin: 0 auto;
+  }
+  h5 {
+    font-size: 1.15rem;
+  }
+  .lead {
+    font-size: 1.05rem;
+  }
+}

@@ -8,7 +8,6 @@ const loadPhones = () => {
   } else {
     // fetching url
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchValue}`;
-
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
@@ -32,7 +31,6 @@ const loadPhones = () => {
     // clearing inner text/elements of phone details for new input search if details exist
     const detailsWrapper = document.getElementById("details-wrapper");
     detailsWrapper.innerText = "";
-
     spinnerFunc("flex");
   }
 };
@@ -129,6 +127,7 @@ const showDetails = (phDetails) => {
   }
 };
 
+// loading spinner
 const spinnerFunc = (spinnerDisplay) => {
   document.getElementById("spinner-container").style.display = spinnerDisplay;
 };
