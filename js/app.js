@@ -22,13 +22,13 @@ const loadPhones = () => {
         }
       });
 
-    // clearing value after searching
+    //clearing value after searching
     searchField.value = "";
 
     //throwing error
     document.getElementById("warning-msg").innerHTML = "";
 
-    // clearing inner text/elements of phone details for new input search if details exist
+    //clearing inner text/elements of phone details for new input search if details exist
     const detailsWrapper = document.getElementById("details-wrapper");
     detailsWrapper.innerText = "";
     spinnerFunc("flex");
@@ -116,11 +116,13 @@ const showDetails = (phDetails) => {
   `;
   detailsWrapper.appendChild(divCol);
 
+  // showing release date msg if not found
   if (phDetails.releaseDate == "") {
     document.getElementById("releaseDate").innerHTML =
       "No released date found.";
   }
 
+  // showing other features msg if not exist
   if (typeof phDetails.others === "undefined") {
     document.querySelector("#other-fetures-contents").innerHTML =
       "Oops! currently there is no other features to show.";

@@ -72,7 +72,6 @@ a.site-title {
   top: 0px;
   left: 0px;
 }
-
 /* media queries  */
 @media (max-width: 767px) {
   .site-row {
