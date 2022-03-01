@@ -1,21 +1,37 @@
 const loadPhones = () => {
   const searchField = document.getElementById("search-input");
   const searchValue = searchField.value;
-  //   fetching url
-  const url = `https://openapi.programming-hero.com/api/phones?search=${searchValue}`;
-  fetch(url)
-    .then((res) => res.json())
-    .then((data) => showPhones(data.data.slice(0, 20)));
-  // .then((data) => console.log(data.data.slice(0, 20)));
-  // clearing value after searching
-  searchField.value = "";
+
+  if (searchValue == "") {
+    document.getElementById("warning-msg").innerHTML =
+      "Please write a phone name.";
+  } else {
+    // fetching url
+    const url = `https://openapi.programming-hero.com/api/phones?search=${searchValue}`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => showPhones(data.data.slice(0, 20)));
+
+    // clearing value after searching
+    searchField.value = "";
+
+    //throwing erro
+    document.getElementById("warning-msg").innerHTML = "";
+
+    // clearing inner text/elements of phone details for new input search if details exist
+    const detailsWrapper = document.getElementById("details-wrapper");
+    detailsWrapper.innerText = "";
+
+    // spinnerFunc("flex");
+  }
 };
+
 const showPhones = (phones) => {
   const phonesContainer = document.getElementById("phone-container");
-  //removing previous nodes/elements if exist for adding new
+  //removing previous nodes/elements if exist
   phonesContainer.innerText = "";
 
-  //iteraing new data using for of loop from fetch url
+  //iterating new data using for of loop from fetch url
   for (const phone of phones) {
     const divCol = document.createElement("div");
     divCol.classList.add("col");
@@ -31,7 +47,7 @@ const showPhones = (phones) => {
       `;
 
     phonesContainer.appendChild(divCol);
-    // console.log(phone);
+    // spinnerFunc("none");
   }
 };
 
@@ -76,22 +92,34 @@ const showDetails = (phDetails) => {
             </div>
             
             <div class="other-fetures"><span class="fw-bold">Other Features</span>: 
-            <p>Bluetooth: <span>${phDetails.others.Bluetooth}</span></p>
-            <p>GPS: <span>${phDetails.others.GPS}</span></p>
-            <p>NFC: <span>${phDetails.others.NFC}</span></p>
-            <p>Radio: <span>${phDetails.others.Radio}</span></p>
-            <p>USB: <span>${phDetails.others.USB}</span></p>
-            <p>WLAN: <span>${phDetails.others.WLAN}</span></p>
-            
+            <div id="other-fetures-contents">
+              <p>Bluetooth: <span>${phDetails?.others?.Bluetooth}</span></p>
+              <p>GPS: <span>${phDetails?.others?.GPS}</span></p>
+              <p>NFC: <span>${phDetails?.others?.NFC}</span></p>
+              <p>Radio: <span>${phDetails?.others?.Radio}</span></p>
+              <p>USB: <span>${phDetails?.others?.USB}</span></p>
+              <p>WLAN: <span>${phDetails?.others?.WLAN}</span></p>
+            </div>
             </div>
 
         </div>
     </div>
   `;
   detailsWrapper.appendChild(divCol);
+
   if (phDetails.releaseDate == "") {
     document.getElementById("releaseDate").innerHTML =
       "No released date found.";
   }
-  console.log(phDetails);
+
+  if (typeof phDetails.others === "undefined") {
+    document.querySelector("#other-fetures-contents").innerHTML =
+      "Oops! currently there is no other features to show.";
+  }
+
+  // console.log(phDetails);
+};
+
+const spinnerFunc = (spinnerDisplay) => {
+  document.getElementById("spinner-container").style.display = spinnerDisplay;
 };

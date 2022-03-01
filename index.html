@@ -12,10 +12,16 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
+    <div id="spinner-container">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
     <header class="py-5">
       <nav class="container-fluid">
         <h1>
-          <a href="#" class="text-dark">PhoneQuest.</a> <span>iphone</span>
+          <a href="#" class="text-dark site-title">PhoneQuester.</a>
+          <span>iphone</span>
         </h1>
       </nav>
     </header>
@@ -26,7 +32,7 @@
             <!-- input & result area -->
             <div class="col-md-7">
               <!-- search input -->
-              <div class="input-group mb-3">
+              <div class="input-group">
                 <input
                   id="search-input"
                   type="text"
@@ -41,12 +47,14 @@
                   Search
                 </button>
               </div>
+              <p id="warning-msg" class="text-danger lead mt-1"></p>
               <!-- serach results -->
-              <div
-                class="row row-cols-1 row-cols-md-3 g-4"
-                id="phone-container"
-              >
-                <!-- <div class="col">
+              <div class="result-container mt-3">
+                <div
+                  class="row row-cols-1 row-cols-md-3 g-4"
+                  id="phone-container"
+                >
+                  <!-- <div class="col">
                   <div class="card h-100">
                     <img src="..." class="card-img-top" alt="..." />
                     <div class="card-body">
@@ -57,6 +65,7 @@
                     </div>
                   </div>
                 </div> -->
+                </div>
               </div>
             </div>
             <!-- phone details area-->
